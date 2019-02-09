@@ -13,33 +13,73 @@ const STORE = {
             },
             {
                 question: "",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             },
             {
                 question: "",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             },
             {
                 question: "",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             },
             {
                 question: "",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             },
             {
                 question: "",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             },
             {
                 question: "Where does Haggis (A combination of sheep organs, onions, and oatmeal cooked inside the sheep's stomach) originate from?",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             },
             {
                 question: "Where was the branded SPAM (Perportidly made from pork shoulder meat and potato starch) invented?",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             },
             {
                 question: "Where do Wasp Crackers (A wasp filled cookie) originate from?",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             },
             {
                 question: "Where is Fried Spider (Seasoned, fried, and served entirely intact) considered a delicacy?",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             },
             {
                 question: "Where is Balut (A duck embryo. Prepared by boiling it alive in the shell) eaten?",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
             }
                 
         ]};
