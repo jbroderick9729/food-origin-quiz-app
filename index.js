@@ -259,6 +259,7 @@ function handleQuiz(){
     console.log(STORE.currentLocation);
 }
 
+//test
 
 
 $(handleQuiz);
