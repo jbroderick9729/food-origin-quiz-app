@@ -191,8 +191,12 @@ function handleSubmitAnswer(status){
         let correctAnswer = STORE.questions[questionIndex].correctAnswer;
         if (userAnswer === correctAnswer){
             STORE.currentLocation = 'correctView';
+            STORE.totalCorrect++;
         }
-        else {STORE.currentLocation = 'incorrectView'};
+        else {
+            STORE.currentLocation = 'incorrectView';
+            STORE.totalIncorrect++;
+        };
 
         renderQuiz();
     });
