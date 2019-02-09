@@ -84,9 +84,10 @@ const STORE = {
                 
         ]};
    
-//update to randomly determine which to say: congrats, hurray, you did it, kudos
 function congrats() {
-    return 'Congrats!';
+    let index = Math.floor(Math.random() * 4);
+    let options = ["Congrats!", "Hurray!", "You did it!", "Kudos!"];
+        return options[index];
 }
 
 //supplies the html to render for a given view, passing in the STORE and QUESTIONS
