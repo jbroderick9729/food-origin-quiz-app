@@ -1,5 +1,5 @@
 const STORE = {
-        currentLocation: "questionView",
+        currentLocation: "introView",
         questionIndex: 0,
         totalCorrect: 0,
         totalIncorrect: 0,
@@ -101,27 +101,42 @@ function createViewHTML(status) {
     switch (status.currentLocation) {
         case "introView": 
             return viewHTML = 
-                `<div class="introView">
+                `<div class="introView" id="js-begin">
                     <h1>Welcome to the quiz</h1>
                     <img src="http://2.bp.blogspot.com/-GYuyz0dENY8/U0aH8cEKBYI/AAAAAAAAACc/3MWXy4O5O7g/s1600/jpg.jpg" alt="image of a table of food dishes">
                     <p>Here are the instructions for the quiz.</p>
-                    <button>Start</button>
+                    <button class="js-start-button">Start</button>
                 </div>`;
                 break;
         case "questionView":
             return viewHTML =
-                `<div class="questionView">
+                `<div class="questionView" id='js-submit'>
                     <h1>Question ${questionNumber} of 10</h1>
                     <img src=${questionInfo.src} alt=${questionInfo.alt}>
-                    <form action="#" method="POST">
-                    <label for="q1">Question ${questionNumber}: ${questionInfo.question}</label><br/><br/>
-                        <input type="radio" value="${questionInfo.answers[0]}" name="q1">${questionInfo.answers[0]}</option><br/>
-                        <input type="radio" value="${questionInfo.answers[1]}" name="q1">${questionInfo.answers[1]}</option><br/>
-                        <input type="radio" value="${questionInfo.answers[2]}" name="q1">${questionInfo.answers[2]}</option><br/>
-                        <input type="radio" value="${questionInfo.answers[3]}" name="q1">${questionInfo.answers[3]}</option><br/><br/>
-                        <button type="submit">Submit</button>
+                    <form>
+                    <fieldset>
+                    <legend for="q1">Question ${questionNumber}: ${questionInfo.question}</legend>
+                        <div>
+                            <input type="radio" id="${questionInfo.answers[0]}" value="${questionInfo.answers[0]}" name="q${questionNumber}">${questionInfo.answers[0]}
+                            <label for="${questionInfo.answers[0]}">
+                        </div>
+                        <div>
+                            <input type="radio" id="${questionInfo.answers[1]}" value="${questionInfo.answers[1]}" name="q${questionNumber}">${questionInfo.answers[1]}
+                            <label for="${questionInfo.answers[1]}">
+                        </div>
+                        <div>
+                            <input type="radio" id="${questionInfo.answers[2]}" value="${questionInfo.answers[2]}" name="q${questionNumber}">${questionInfo.answers[2]}
+                            <label for="${questionInfo.answers[2]}">
+                        </div>
+                        <div>   
+                            <input type="radio" id="${questionInfo.answers[3]}" value="${questionInfo.answers[3]}" name="q${questionNumber}">${questionInfo.answers[3]}
+                            <label for="${questionInfo.answers[3]}">
+                        </div>
+                        <button type="submit" class="submit">Submit</button>
+                    </fielset>
                     </form>
-                </div>`;
+                </div>`
+
         case "incorrectView":
             return viewHTML = 
             `<div class="incorrectView">
@@ -159,6 +174,32 @@ function createViewHTML(status) {
 }
 
 
+function startQuiz(){
+    $('#js-begin').on('click', '.js-start-button', () => {
+        console.log('hi');
+        STORE.currentLocation = 'questionView';
+        renderQuiz();
+    });
+}
+
+function handleSubmitAnswer(){
+    $('#js-submit').on('click', '.submit', (event) =>{
+        event.preventDefault();
+        console.log('Submiting answer');
+        let userAnswer;
+        $(`input[name='q${questionNumber}']`).click(function(){
+            userAnswer = $(`input[name='q${questionNumber}']:checked`).val()});
+        let correctAnswer = STORE.questions[questionIndex].correctAnswer;
+        console.log(userAnswer, correctAnswer);
+
+        if (userAnswer === correctAnswer){
+            STORE.currentLocation = 'correctView';
+        }
+        else {STORE.currentLocation = 'incorrectView'};
+
+        renderQuiz();
+    });
+}
 
 /*function render
 // User can start the quiz and is taken to question 1
@@ -207,6 +248,17 @@ function renderQuiz() {
     let viewHTML = createViewHTML(STORE);
     //renders that html to the page
     $('.js-quiz').html(viewHTML);
+    console.log(STORE.currentLocation);
+
 }
 
-$(renderQuiz);
+function handleQuiz(){
+    renderQuiz();
+    startQuiz();
+    handleSubmitAnswer();
+    console.log(STORE.currentLocation);
+}
+
+
+
+$(handleQuiz);
