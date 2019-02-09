@@ -91,11 +91,8 @@ function congrats() {
 
 //supplies the html to render for a given view, passing in the STORE and QUESTIONS
 function createViewHTML(status) {
-    //index of question in QUESTIONS
     let questionIndex = status.questionIndex;
-    // +1 because the Q #1 is at the 0 index in the array
     let questionNumber = questionIndex + 1;
-    //gets the object for the question so we can just access its properties
     let questionInfo = status.questions[questionIndex];
     
     switch (status.currentLocation) {
@@ -153,7 +150,7 @@ function createViewHTML(status) {
                 `<div class="correctView">
                     <h1>Correct!</h1>
                     <img src="https://memegenerator.net/img/instances/82030845/most-excellent.jpg" alt="bill and ted most excellent meme">
-                    <p>${congrats()}! That's correct.</p>
+                    <p>${congrats()} That's correct.</p>
                     <p>Correct: ${status.totalCorrect}</p>
                     <p>Wrong: ${status.totalIncorrect}</p>
                     <button>Next</button>
@@ -182,16 +179,15 @@ function startQuiz(){
     });
 }
 
-function handleSubmitAnswer(){
-    $('#js-submit').on('click', '.submit', (event) =>{
+function handleSubmitAnswer(status){
+    let questionIndex = status.questionIndex;
+    let questionNumber = questionIndex + 1;
+    let input = `q${questionNumber}`;
+    
+    $('.js-quiz').on('click', '.submit', (event) =>{
         event.preventDefault();
-        console.log('Submiting answer');
-        let userAnswer;
-        $(`input[name='q${questionNumber}']`).click(function(){
-            userAnswer = $(`input[name='q${questionNumber}']:checked`).val()});
+        let userAnswer = $('input:checked').val();
         let correctAnswer = STORE.questions[questionIndex].correctAnswer;
-        console.log(userAnswer, correctAnswer);
-
         if (userAnswer === correctAnswer){
             STORE.currentLocation = 'correctView';
         }
@@ -255,11 +251,8 @@ function renderQuiz() {
 function handleQuiz(){
     renderQuiz();
     startQuiz();
-    handleSubmitAnswer();
+    handleSubmitAnswer(STORE);
     console.log(STORE.currentLocation);
 }
-
-//test
-
 
 $(handleQuiz);
