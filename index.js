@@ -1,64 +1,62 @@
-
-// this will need to update when we click to go to the next questions
 const STORE = {
-        currentLocation: "introView",
+        currentLocation: "questionView",
         questionIndex: 0,
         totalCorrect: 0,
-        totalIncorrect: 0    
-    };
-
-const QUESTIONS = [
-    {
-        question: "Where does sushi come from?",
-        answers: ["Japan", "Italy", "USA", "Paraguay"],
-        correctAnswer: "Japan",
-        src: "https://c-lj.gnst.jp/public/article/detail/a/00/01/a0001909/img/basic/a0001909_main.jpg?20180711132334",
-        alt: "image of sushi"
-    },
-        {
-            question: "",
-        },
-        {
-            question: "",
-        },
-        {
-            question: "",
-        },
-        {
-            question: "",
-        },
-        {
-            question: "",
-        },
-        {
-            question: "Where does Haggis (A combination of sheep organs, onions, and oatmeal cooked inside the sheep's stomach) originate from?",
-        },
-        {
-            question: "Where was the branded SPAM (Perportidly made from pork shoulder meat and potato starch) invented?",
-        },
-        {
-            question: "Where do Wasp Crackers (A wasp filled cookie) originate from?",
-        },
-        {
-            question: "Where is Fried Spider (Seasoned, fried, and served entirely intact) considered a delicacy?",
-        },
-        {
-            question: "Where is Balut (A duck embryo. Prepared by boiling it alive in the shell) eaten?",
-        }
-        ];
+        totalIncorrect: 0,
+        questions:  [
+            {
+            question: "Where does sushi come from?",
+            answers: ["Japan", "Italy", "USA", "Paraguay"],
+            correctAnswer: "Japan",
+            src: "https://c-lj.gnst.jp/public/article/detail/a/00/01/a0001909/img/basic/a0001909_main.jpg?20180711132334",
+            alt: "image of sushi"
+            },
+            {
+                question: "",
+            },
+            {
+                question: "",
+            },
+            {
+                question: "",
+            },
+            {
+                question: "",
+            },
+            {
+                question: "",
+            },
+            {
+                question: "Where does Haggis (A combination of sheep organs, onions, and oatmeal cooked inside the sheep's stomach) originate from?",
+            },
+            {
+                question: "Where was the branded SPAM (Perportidly made from pork shoulder meat and potato starch) invented?",
+            },
+            {
+                question: "Where do Wasp Crackers (A wasp filled cookie) originate from?",
+            },
+            {
+                question: "Where is Fried Spider (Seasoned, fried, and served entirely intact) considered a delicacy?",
+            },
+            {
+                question: "Where is Balut (A duck embryo. Prepared by boiling it alive in the shell) eaten?",
+            }
+                
+        ]};
+   
 //update to randomly determine which to say: congrats, hurray, you did it, kudos
 function congrats() {
     return 'Congrats!';
 }
 
 //supplies the html to render for a given view, passing in the STORE and QUESTIONS
-function createViewHTML(status, questions) {
+function createViewHTML(status) {
     //index of question in QUESTIONS
     let questionIndex = status.questionIndex;
     // +1 because the Q #1 is at the 0 index in the array
     let questionNumber = questionIndex + 1;
     //gets the object for the question so we can just access its properties
-    let questionInfo = questions[questionIndex];
+    let questionInfo = status.questions[questionIndex];
     
     switch (status.currentLocation) {
         case "introView": 
@@ -119,13 +117,7 @@ function createViewHTML(status, questions) {
                 break;
         }
 }
-//loads the html for the view to the js-quiz div
-function renderQuiz() {  
-    //gets which view to show, fills in dynamic info
-    let viewHTML = createViewHTML(STORE, QUESTIONS);
-    //renders that html to the page
-    $('.js-quiz').html(viewHTML);
-}
+
 
 
 /*function render
@@ -169,13 +161,12 @@ function handleGameEnd
 function resetData
 */
 
-
-//Quiz functions
-function renderQuiz(){
-    render();
-    handleSubmitAnswer();
-
-    renderNextQuestion();
+//loads the html for the view to the js-quiz div
+function renderQuiz() {  
+    //gets which view to show, fills in dynamic info
+    let viewHTML = createViewHTML(STORE);
+    //renders that html to the page
+    $('.js-quiz').html(viewHTML);
 }
 
 $(renderQuiz);
