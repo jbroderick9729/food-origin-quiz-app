@@ -9,52 +9,52 @@ const STORE = {
             answers: ["Japan", "Italy", "USA", "Paraguay"],
             correctAnswer: "Japan",
             src: "https://c-lj.gnst.jp/public/article/detail/a/00/01/a0001909/img/basic/a0001909_main.jpg?20180711132334",
-            alt: "image of sushi"
+            alt: "An image of sushi."
             },
             {
-            question: "Where does Haggis (A combination of sheep organs, onions, and oatmeal cooked inside the sheep's stomach) originate from?",
-            answers: ["Guatamala", "Beijing", "Bangladesh", "Scotland"],
+            question: "Where does haggis (a combination of sheep organs, onions, and oatmeal cooked inside the sheep's stomach) originate from?",
+            answers: ["Guatamala", "China", "Bangladesh", "Scotland"],
             correctAnswer: "Scotland",
             src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Scotland_Haggis.jpg/1200px-Scotland_Haggis.jpg",
             alt: "An image of Haggis wrapped up in plastic for sale."
             },
             {
-            question: "Where was the branded SPAM (Perportidly made from pork shoulder meat and potato starch) invented?",
-            answers: ["Hawaii", "Australia", "USA", "China"],
+            question: "Where was the branded SPAM (purportedly made from pork shoulder meat and potato starch) invented?",
+            answers: ["Russia", "Australia", "USA", "China"],
             correctAnswer: "USA",
             src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Spam_can.png/948px-Spam_can.png",
             alt: "An image of classic canned spam."
             },
             {
-            question: "Where do Wasp Crackers (A wasp filled cookie) originate from?",
-            answers: ["Alaska", "Germany", "Japan", "Lithuania"],
+            question: "Where do Wasp Crackers (wasp filled cookies) originate from?",
+            answers: ["Poland", "Germany", "Japan", "Lithuania"],
             correctAnswer: "Japan",
             src: "https://sabotagetimes.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_482/MTI5NDg0MDc2NTAyNTk5Njkw/pastedgraphic-9.webp",
             alt: "Four cookies with wasp pieces throughout."
             },
             {
-            question: "Where is Fried Spider (Seasoned, fried, and served entirely intact) considered a delicacy?",
-            answers: ["Cambodia", "South-Korea", "Greenland", "Norway"],
+            question: "Where is Fried Spider (seasoned, fried, and served entirely intact) considered a delicacy?",
+            answers: ["Cambodia", "South Korea", "Greenland", "Norway"],
             correctAnswer: "Cambodia",
             src: "https://s21103.pcdn.co/wp-content/uploads/2014/04/P2022689.jpg.webp",
             alt: "A large metal bowl filled with a mountain of black fried spiders."
             },
             {
-            question: "Where is Balut (A duck embryo. Prepared by boiling it alive in the shell) eaten?",
-            answers: ["Africa", "Philippines", "United-Kingdom", "New-Zealand"],
+            question: "Where is Balut (a duck embryo, prepared by boiling it alive in the shell) eaten?",
+            answers: ["Africa", "Philippines", "United Kingdom", "New Zealand"],
             correctAnswer: "Philippines",
             src: "https://c1.staticflickr.com/3/2808/9103467843_2b39b27373_b.jpg",
             alt: "Visbilly developed duck embryo inside of the shell it was boiled in."
             },
             {
-            question: "Where is Jellied Moose Nose (Boiled and spiced then covered in a jelly broth) eaten?",
-            answers: ["USA", "Canada", "Europe", "Sweden"],
+            question: "Where is Jellied Moose Nose (boiled and spiced then covered in a jelly broth) eaten?",
+            answers: ["USA", "Canada", "Italy", "Sweden"],
             correctAnswer: "Canada",
             src: "https://coxrare.files.wordpress.com/2018/07/jellied-moose-nose.png?w=1024&h=535&crop=1",
             alt: "Two blocks of Jellied Moose Nose"
             },
             {
-            question: "Where in the world is Huitlacoche (Also known as Sleeping Excrement) eaten?",
+            question: "Where in the world is Huitlacoche (also known as Sleeping Excrement) eaten?",
             answers: ["Spain", "Mexico", "Egypt", "Iceland"],
             correctAnswer: "Mexico",
             src: "http://4.bp.blogspot.com/-G22EVuXrgsM/TnbYPV9OAGI/AAAAAAAAA48/sSrLziX3S8A/s1600/huitlacoche2.jpg",
@@ -68,7 +68,7 @@ const STORE = {
             alt: "A transclucent jellyfied aged fish."
             },    
             {
-            question: "Where is a delicacy known as Finanziera (A sauce made with a combination of combs, wattles, and veal brains.",
+            question: "Where is a delicacy known as Finanziera (a sauce made with a combination of combs, wattles, and veal brains) eaten?",
             answers: ["USA", "Mexico", "France", "Italy"],
             correctAnswer: "Italy",
             src: "https://instagram.fagc1-1.fna.fbcdn.net/vp/b49f4ebbbb167fff62cdd34797a2f242/5CDEBD39/t51.2885-15/sh0.08/e35/s640x640/31425115_187061881941544_2907563245868941312_n.jpg?_nc_ht=instagram.fagc1-1.fna.fbcdn.net",
@@ -92,9 +92,9 @@ function createViewHTML() {
         case "introView": 
             return viewHTML = 
                 `<div class="introView" id="js-begin">
-                    <h1>Welcome to the quiz</h1>
+                    <h1>Welcome to the Foods of the World quiz.</h1>
                     <img src="http://2.bp.blogspot.com/-GYuyz0dENY8/U0aH8cEKBYI/AAAAAAAAACc/3MWXy4O5O7g/s1600/jpg.jpg" alt="image of a table of food dishes">
-                    <p>Here are the instructions for the quiz.</p>
+                    <p>Take the quiz by clicking the Start button below. The quiz is 10 questions long. Enjoy!</p>
                     <button class="js-start-button">Start</button>
                 </div>`;
                 break;
@@ -129,9 +129,10 @@ function createViewHTML() {
         case "incorrectView":
             return viewHTML = 
             `<div class="incorrectView">
-                <h1>Wrong!</h1>
+                <h1>That's wrong.</h1>
                 <img src="https://c1.staticflickr.com/3/2589/3860162318_7ac34cf82d_b.jpg" alt="food the looks like a sad face">
                 <p>The correct answer was ${questionInfo.correctAnswer}.</p>
+                <p>Here's your current score:</p>
                 <p>Correct: ${STORE.totalCorrect}</p>
                 <p>Wrong: ${STORE.totalIncorrect}</p>
                 <button class="next">Next</button>
@@ -143,6 +144,7 @@ function createViewHTML() {
                     <h1>Correct!</h1>
                     <img src="https://memegenerator.net/img/instances/82030845/most-excellent.jpg" alt="bill and ted most excellent meme">
                     <p>${congrats()} That's correct.</p>
+                    <p>Here's your current score:</p>
                     <p>Correct: ${STORE.totalCorrect}</p>
                     <p>Wrong: ${STORE.totalIncorrect}</p>
                     <button class="next">Next</button>
@@ -151,11 +153,12 @@ function createViewHTML() {
         case "endView": 
             return viewHTML =
                 `<div class="endView">
-                    <h1>Thanks for taking the quiz.</h1>
+                    <h1>Thanks for taking the Foods of the World quiz.</h1>
                     <img src="https://i0.wp.com/anamicooks.com/wp-content/uploads/2017/11/international-foods-list.jpg?fit=1300%2C866&ssl=1" alt="popular foods of the world">
                     <p>Score:</p>
                     <p>Correct: ${STORE.totalCorrect}</p>
                     <p>Wrong: ${STORE.totalIncorrect}</p>
+                    <p>Want to try again? Click the button below.</p>
                     <button class="startOver">Start over</button>
                 </div>`;
                 break;
@@ -223,7 +226,7 @@ function renderQuiz() {
 function handleQuiz(){
     renderQuiz();
     startQuiz();
-    handleSubmitAnswer(STORE);
+    handleSubmitAnswer();
     handleNext();
     handleStartOver();
     
