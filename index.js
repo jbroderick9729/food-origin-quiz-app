@@ -55,7 +55,7 @@ const STORE = {
             },
             {
             question: "Where in the world is Huitlacoche (Also known as Sleeping Excrement) eaten?",
-            answers: [""],
+            answers: ["Spain", "Mexico", "Egypt", "Iceland"],
             correctAnswer: "Mexico",
             src: "http://4.bp.blogspot.com/-G22EVuXrgsM/TnbYPV9OAGI/AAAAAAAAA48/sSrLziX3S8A/s1600/huitlacoche2.jpg",
             alt: "Corn covered in a fungus called corn smut."
@@ -68,11 +68,11 @@ const STORE = {
             alt: "A transclucent jellyfied aged fish."
             },    
             {
-            question: "",
-            answers: [],
-            correctAnswer: " ",
-            src: " ",
-            alt: " "
+            question: "Where is a delicacy known as Finanziera (A sauce made with a combination of combs, wattles, and veal brains.",
+            answers: ["USA", "Mexico", "France", "Italy"],
+            correctAnswer: "Italy",
+            src: "https://instagram.fagc1-1.fna.fbcdn.net/vp/b49f4ebbbb167fff62cdd34797a2f242/5CDEBD39/t51.2885-15/sh0.08/e35/s640x640/31425115_187061881941544_2907563245868941312_n.jpg?_nc_ht=instagram.fagc1-1.fna.fbcdn.net",
+            alt: "Plate of stewed meat."
              }, 
                 
         ]};
@@ -203,13 +203,13 @@ function handleNext() {
 }
 
 function handleStartOver() {
-    $('.js-quiz').on('click', '.startOver', () =>{
-        console.log('intro view')
+    $('.js-quiz').on('click', '.startOver', () => {
+        console.log('intro view');
         STORE.currentLocation = 'introView';
         STORE.questionIndex = 0;
         STORE.totalCorrect = 0;
         STORE.totalIncorrect = 0;
-         
+        renderQuiz(); 
     });
         
 };
@@ -225,6 +225,7 @@ function handleQuiz(){
     startQuiz();
     handleSubmitAnswer(STORE);
     handleNext();
+    handleStartOver();
     
 }
 
