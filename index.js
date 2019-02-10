@@ -6,8 +6,7 @@ const STORE = {
         questions:  [
             {
             question: "Where does sushi come from?",
-            answers: [
-                "Japan", "Italy", "USA", "Paraguay"],
+            answers: ["Japan", "Italy", "USA", "Paraguay"],
             correctAnswer: "Japan",
             src: "https://c-lj.gnst.jp/public/article/detail/a/00/01/a0001909/img/basic/a0001909_main.jpg?20180711132334",
             alt: "image of sushi"
@@ -48,26 +47,33 @@ const STORE = {
             alt: "Visbilly developed duck embryo inside of the shell it was boiled in."
             },
             {
-                question: "Where is Jellied Moose Nose (Boiled and spiced then covered in a jelly broth) eaten?",
-                answers: ["USA", "Canada", "Europe", ""],
-                correctAnswer: "Canada",
-                src: " ",
-                alt: " "
-                },
-                {
-                question: "Where in the world is Huitlacoche (Also known as Sleeping Excrement) eaten?",
-                answers: [""],
-                correctAnswer: "Mexico",
-                src: " ",
-                alt: " "
-                },
-                {
-                question: "",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-                },    
+            question: "Where is Jellied Moose Nose (Boiled and spiced then covered in a jelly broth) eaten?",
+            answers: ["USA", "Canada", "Europe", ""],
+            correctAnswer: "Canada",
+            src: " ",
+            alt: " "
+            },
+            {
+            question: "Where in the world is Huitlacoche (Also known as Sleeping Excrement) eaten?",
+            answers: [""],
+            correctAnswer: "Mexico",
+            src: " ",
+            alt: " "
+            },
+            {
+            question: "Where is Lutefisk (a delicacy is made from aged stockfish and lye) consumed?",
+            answers: ["France", "Norway", "Laos", "Argentina"],
+            correctAnswer: "Norway",
+            src: " ",
+            alt: " "
+            },    
+            {
+            question: "",
+            answers: [],
+            correctAnswer: " ",
+            src: " ",
+            alt: " "
+             }, 
                 
         ]};
    
@@ -150,7 +156,7 @@ function createViewHTML() {
                     <p>Score:</p>
                     <p>Correct: ${STORE.totalCorrect}</p>
                     <p>Wrong: ${STORE.totalIncorrect}</p>
-                    <button>Start over</button>
+                    <button class="startOver">Start over</button>
                 </div>`;
                 break;
         }
@@ -190,34 +196,23 @@ function handleNext() {
             STORE.currentLocation = "questionView";
         } else {
             STORE.currentLocation = "endView";
+
         }
         renderQuiz();
-    })
+    });
 }
 
-// function handleCorrectAnswer
-// 	Correct answer view
-// 	Lightbulb turn on (maybe ding sound)
-// 	If user is not on final question (next question)
-// 	If user is on final question send user to End Game view(handleGameEnd)
-
-
-// function handleIncorrectAnswer
-// 	Incorrect Answer View
-// 	Show user correct answer for the question from (handle submit answer function data)
-// 	Maybe sound bite of Womp Womp Woooooomp
-// 	If user is not on final question (next question)
-// 	If user is on final question send user to End Game view(handleGameEnd)
-
-// function handleGameEnd
-// 	Show user End GAme View
-// 	Show total score
-// 	Show number of correct answers
-// 	Show number of incorrect answers
-//     Show number of unanswered questions...maybe?
-    
-    
-// function resetData
+function handleStartOver() {
+    $('.js-quiz').on('click', '.startOver', () =>{
+        console.log('intro view')
+        STORE.currentLocation = 'introView';
+        STORE.questionIndex = 0;
+        STORE.totalCorrect = 0;
+        STORE.totalIncorrect = 0;
+         
+    });
+        
+};
 
 
 function renderQuiz() {  
@@ -230,6 +225,7 @@ function handleQuiz(){
     startQuiz();
     handleSubmitAnswer(STORE);
     handleNext();
+    
 }
 
 $(handleQuiz);
