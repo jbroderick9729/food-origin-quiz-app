@@ -21,8 +21,8 @@ const STORE = {
             },
             {
             question: "Where was the branded SPAM (Perportidly made from pork shoulder meat and potato starch) invented?",
-            answers: ["Hawaii", "Australia", "United-States", "China"],
-            correctAnswer: "United-States",
+            answers: ["Hawaii", "Australia", "USA", "China"],
+            correctAnswer: "USA",
             src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Spam_can.png/948px-Spam_can.png",
             alt: "An image of classic canned spam."
             },
@@ -49,15 +49,15 @@ const STORE = {
             },
             {
                 question: "Where is Jellied Moose Nose (Boiled and spiced then covered in a jelly broth) eaten?",
-                answers: ["United-states", "Canada", "Europe", ""],
-                correctAnswer: " ",
+                answers: ["USA", "Canada", "Europe", ""],
+                correctAnswer: "Canada",
                 src: " ",
                 alt: " "
                 },
                 {
-                question: "Huitlacoche",
-                answers: [],
-                correctAnswer: " ",
+                question: "Where in the world is Huitlacoche (Also known as Sleeping Excrement) eaten?",
+                answers: [""],
+                correctAnswer: "Mexico",
                 src: " ",
                 alt: " "
                 },
@@ -177,6 +177,7 @@ function handleSubmitAnswer(){
             STORE.currentLocation = 'incorrectView';
             STORE.totalIncorrect++;
         };
+        questionIndex += 1;
         renderQuiz();
     });
 }
