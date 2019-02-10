@@ -40,13 +40,6 @@ const STORE = {
                 alt: " "
             },
             {
-                question: "",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-            },
-            {
                 question: "Where does Haggis (A combination of sheep organs, onions, and oatmeal cooked inside the sheep's stomach) originate from?",
                 answers: [],
                 correctAnswer: " ",
@@ -134,7 +127,6 @@ function createViewHTML(status) {
                     </fielset>
                     </form>
                 </div>`
-
         case "incorrectView":
             return viewHTML = 
             `<div class="incorrectView">
@@ -143,7 +135,7 @@ function createViewHTML(status) {
                 <p>The correct answer was ${questionInfo.correctAnswer}.</p>
                 <p>Correct: ${status.totalCorrect}</p>
                 <p>Wrong: ${status.totalIncorrect}</p>
-                <button>Next</button>
+                <button class="next">Next</button>
             </div>`;
             break;
         case "correctView":
@@ -154,7 +146,7 @@ function createViewHTML(status) {
                     <p>${congrats()} That's correct.</p>
                     <p>Correct: ${status.totalCorrect}</p>
                     <p>Wrong: ${status.totalIncorrect}</p>
-                    <button>Next</button>
+                    <button class="next">Next</button>
                 </div>`;
                 break;
         case "endView": 
@@ -171,7 +163,6 @@ function createViewHTML(status) {
         }
 }
 
-
 function startQuiz(){
     $('#js-begin').on('click', '.js-start-button', () => {
         console.log('hi');
@@ -182,10 +173,8 @@ function startQuiz(){
 
 function handleSubmitAnswer(status){
     let questionIndex = status.questionIndex;
-    let questionNumber = questionIndex + 1;
-    let input = `q${questionNumber}`;
     
-    $('.js-quiz').on('click', '.submit', (event) =>{
+    $('.js-quiz').on('click', '.submit', (event) => {
         event.preventDefault();
         let userAnswer = $('input:checked').val();
         let correctAnswer = STORE.questions[questionIndex].correctAnswer;
@@ -202,52 +191,58 @@ function handleSubmitAnswer(status){
     });
 }
 
-/*function render
-// User can start the quiz and is taken to question 1
-// From correct view or incorrect view, user can go to next question
-// After the final question user is taken to the end view
+function handleNext() {   
+    $('.js-quiz').on('click', '.next', () => {
+        let length = STORE.questions.length - 1;        
+        if (STORE.questionIndex < STORE.questions.length -1 ) {
+            console.log(STORE.questionIndex);
+            STORE.questionIndex++;
+            STORE.currentLocation = "questionView";
+        } else {
+            STORE.currentLocation = "endView";
+        }
+        renderQuiz();
+    })
+}
 
 
-function handleSubmitAnswer
-	user clicks submit button
-	Stop normal submit behavior
-	Compare question answer to user data
-	If question and answer match (handleCorrectAnswer)
-	else (handleIncorrectAnswer)
+// function handleSubmitAnswer
+// 	user clicks submit button
+// 	Stop normal submit behavior
+// 	Compare question answer to user data
+// 	If question and answer match (handleCorrectAnswer)
+// 	else (handleIncorrectAnswer)
 
 
-function handleCorrectAnswer
-	Correct answer view
-	Lightbulb turn on (maybe ding sound)
-	If user is not on final question (next question)
-	If user is on final question send user to End Game view(handleGameEnd)
+// function handleCorrectAnswer
+// 	Correct answer view
+// 	Lightbulb turn on (maybe ding sound)
+// 	If user is not on final question (next question)
+// 	If user is on final question send user to End Game view(handleGameEnd)
 
 
 
-function handleIncorrectAnswer
-	Incorrect Answer View
-	Show user correct answer for the question from (handle submit answer function data)
-	Maybe sound bite of Womp Womp Woooooomp
-	If user is not on final question (next question)
-	If user is on final question send user to End Game view(handleGameEnd)
+// function handleIncorrectAnswer
+// 	Incorrect Answer View
+// 	Show user correct answer for the question from (handle submit answer function data)
+// 	Maybe sound bite of Womp Womp Woooooomp
+// 	If user is not on final question (next question)
+// 	If user is on final question send user to End Game view(handleGameEnd)
 
 
-function handleGameEnd
-	Show user End GAme View
-	Show total score
-	Show number of correct answers
-	Show number of incorrect answers
-    Show number of unanswered questions...maybe?
+// function handleGameEnd
+// 	Show user End GAme View
+// 	Show total score
+// 	Show number of correct answers
+// 	Show number of incorrect answers
+//     Show number of unanswered questions...maybe?
     
     
-function resetData
-*/
+// function resetData
 
-//loads the html for the view to the js-quiz div
+
 function renderQuiz() {  
-    //gets which view to show, fills in dynamic info
     let viewHTML = createViewHTML(STORE);
-    //renders that html to the page
     $('.js-quiz').html(viewHTML);
     console.log(STORE.currentLocation);
 
@@ -257,6 +252,7 @@ function handleQuiz(){
     renderQuiz();
     startQuiz();
     handleSubmitAnswer(STORE);
+    handleNext();
     console.log(STORE.currentLocation);
 }
 
