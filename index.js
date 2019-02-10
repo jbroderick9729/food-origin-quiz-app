@@ -6,74 +6,68 @@ const STORE = {
         questions:  [
             {
             question: "Where does sushi come from?",
-            answers: ["Japan", "Italy", "USA", "Paraguay"],
+            answers: [
+                "Japan", "Italy", "USA", "Paraguay"],
             correctAnswer: "Japan",
             src: "https://c-lj.gnst.jp/public/article/detail/a/00/01/a0001909/img/basic/a0001909_main.jpg?20180711132334",
             alt: "image of sushi"
             },
             {
+            question: "Where does Haggis (A combination of sheep organs, onions, and oatmeal cooked inside the sheep's stomach) originate from?",
+            answers: ["Guatamala", "Beijing", "Bangladesh", "Scotland"],
+            correctAnswer: "Scotland",
+            src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Scotland_Haggis.jpg/1200px-Scotland_Haggis.jpg",
+            alt: "An image of Haggis wrapped up in plastic for sale."
+            },
+            {
+            question: "Where was the branded SPAM (Perportidly made from pork shoulder meat and potato starch) invented?",
+            answers: ["Hawaii", "Australia", "United-States", "China"],
+            correctAnswer: "United-States",
+            src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Spam_can.png/948px-Spam_can.png",
+            alt: "An image of classic canned spam."
+            },
+            {
+            question: "Where do Wasp Crackers (A wasp filled cookie) originate from?",
+            answers: ["Alaska", "Germany", "Japan", "Lithuania"],
+            correctAnswer: "Japan",
+            src: "https://sabotagetimes.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_482/MTI5NDg0MDc2NTAyNTk5Njkw/pastedgraphic-9.webp",
+            alt: "Four cookies with wasp pieces throughout."
+            },
+            {
+            question: "Where is Fried Spider (Seasoned, fried, and served entirely intact) considered a delicacy?",
+            answers: ["Cambodia", "South-Korea", "Greenland", "Norway"],
+            correctAnswer: "Cambodia",
+            src: "https://s21103.pcdn.co/wp-content/uploads/2014/04/P2022689.jpg.webp",
+            alt: "A large metal bowl filled with a mountain of black fried spiders."
+            },
+            {
+            question: "Where is Balut (A duck embryo. Prepared by boiling it alive in the shell) eaten?",
+            answers: ["Africa", "Philippines", "United-Kingdom", "New-Zealand"],
+            correctAnswer: "Philippines",
+            src: "https://c1.staticflickr.com/3/2808/9103467843_2b39b27373_b.jpg",
+            alt: "Visbilly developed duck embryo inside of the shell it was boiled in."
+            },
+            {
+                question: "Where is Jellied Moose Nose (Boiled and spiced then covered in a jelly broth) eaten?",
+                answers: ["United-states", "Canada", "Europe", ""],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
+                },
+                {
+                question: "Huitlacoche",
+                answers: [],
+                correctAnswer: " ",
+                src: " ",
+                alt: " "
+                },
+                {
                 question: "",
                 answers: [],
                 correctAnswer: " ",
                 src: " ",
                 alt: " "
-            },
-            {
-                question: "",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-            },
-            {
-                question: "",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-            },
-            {
-                question: "",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-            },
-            {
-                question: "Where does Haggis (A combination of sheep organs, onions, and oatmeal cooked inside the sheep's stomach) originate from?",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-            },
-            {
-                question: "Where was the branded SPAM (Perportidly made from pork shoulder meat and potato starch) invented?",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-            },
-            {
-                question: "Where do Wasp Crackers (A wasp filled cookie) originate from?",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-            },
-            {
-                question: "Where is Fried Spider (Seasoned, fried, and served entirely intact) considered a delicacy?",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-            },
-            {
-                question: "Where is Balut (A duck embryo. Prepared by boiling it alive in the shell) eaten?",
-                answers: [],
-                correctAnswer: " ",
-                src: " ",
-                alt: " "
-            }
+                },    
                 
         ]};
    
@@ -190,7 +184,7 @@ function handleSubmitAnswer(){
 function handleNext() {   
     $('.js-quiz').on('click', '.next', () => {
         let length = STORE.questions.length - 1;        
-        if (STORE.questionIndex < STORE.questions.length -1 ) {
+        if (STORE.questionIndex < length ) {
             STORE.questionIndex++;
             STORE.currentLocation = "questionView";
         } else {
