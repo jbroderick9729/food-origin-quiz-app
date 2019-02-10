@@ -48,24 +48,24 @@ const STORE = {
             },
             {
             question: "Where is Jellied Moose Nose (Boiled and spiced then covered in a jelly broth) eaten?",
-            answers: ["USA", "Canada", "Europe", ""],
+            answers: ["USA", "Canada", "Europe", "Sweden"],
             correctAnswer: "Canada",
-            src: " ",
-            alt: " "
+            src: "https://coxrare.files.wordpress.com/2018/07/jellied-moose-nose.png?w=1024&h=535&crop=1",
+            alt: "Two blocks of Jellied Moose Nose"
             },
             {
             question: "Where in the world is Huitlacoche (Also known as Sleeping Excrement) eaten?",
             answers: [""],
             correctAnswer: "Mexico",
-            src: " ",
-            alt: " "
+            src: "http://4.bp.blogspot.com/-G22EVuXrgsM/TnbYPV9OAGI/AAAAAAAAA48/sSrLziX3S8A/s1600/huitlacoche2.jpg",
+            alt: "Corn covered in a fungus called corn smut."
             },
             {
-            question: "Where is Lutefisk (a delicacy is made from aged stockfish and lye) consumed?",
+            question: "Where is Lutefisk (a delicacy made from aged stockfish and lye) consumed?",
             answers: ["France", "Norway", "Laos", "Argentina"],
             correctAnswer: "Norway",
-            src: " ",
-            alt: " "
+            src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/ForkLutefisk.jpg/749px-ForkLutefisk.jpg",
+            alt: "A transclucent jellyfied aged fish."
             },    
             {
             question: "",
