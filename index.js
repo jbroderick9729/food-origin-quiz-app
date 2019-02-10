@@ -83,13 +83,12 @@ function congrats() {
         return options[index];
 }
 
-//supplies the html to render for a given view, passing in the STORE and QUESTIONS
-function createViewHTML(status) {
-    let questionIndex = status.questionIndex;
+function createViewHTML() {
+    let questionIndex = STORE.questionIndex;
     let questionNumber = questionIndex + 1;
-    let questionInfo = status.questions[questionIndex];
+    let questionInfo = STORE.questions[questionIndex];
     
-    switch (status.currentLocation) {
+    switch (STORE.currentLocation) {
         case "introView": 
             return viewHTML = 
                 `<div class="introView" id="js-begin">
@@ -133,8 +132,8 @@ function createViewHTML(status) {
                 <h1>Wrong!</h1>
                 <img src="https://c1.staticflickr.com/3/2589/3860162318_7ac34cf82d_b.jpg" alt="food the looks like a sad face">
                 <p>The correct answer was ${questionInfo.correctAnswer}.</p>
-                <p>Correct: ${status.totalCorrect}</p>
-                <p>Wrong: ${status.totalIncorrect}</p>
+                <p>Correct: ${STORE.totalCorrect}</p>
+                <p>Wrong: ${STORE.totalIncorrect}</p>
                 <button class="next">Next</button>
             </div>`;
             break;
@@ -144,8 +143,8 @@ function createViewHTML(status) {
                     <h1>Correct!</h1>
                     <img src="https://memegenerator.net/img/instances/82030845/most-excellent.jpg" alt="bill and ted most excellent meme">
                     <p>${congrats()} That's correct.</p>
-                    <p>Correct: ${status.totalCorrect}</p>
-                    <p>Wrong: ${status.totalIncorrect}</p>
+                    <p>Correct: ${STORE.totalCorrect}</p>
+                    <p>Wrong: ${STORE.totalIncorrect}</p>
                     <button class="next">Next</button>
                 </div>`;
                 break;
@@ -155,8 +154,8 @@ function createViewHTML(status) {
                     <h1>Thanks for taking the quiz.</h1>
                     <img src="https://i0.wp.com/anamicooks.com/wp-content/uploads/2017/11/international-foods-list.jpg?fit=1300%2C866&ssl=1" alt="popular foods of the world">
                     <p>Score:</p>
-                    <p>Correct: ${status.totalCorrect}</p>
-                    <p>Wrong: ${status.totalIncorrect}</p>
+                    <p>Correct: ${STORE.totalCorrect}</p>
+                    <p>Wrong: ${STORE.totalIncorrect}</p>
                     <button>Start over</button>
                 </div>`;
                 break;
@@ -165,14 +164,13 @@ function createViewHTML(status) {
 
 function startQuiz(){
     $('#js-begin').on('click', '.js-start-button', () => {
-        console.log('hi');
         STORE.currentLocation = 'questionView';
         renderQuiz();
     });
 }
 
-function handleSubmitAnswer(status){
-    let questionIndex = status.questionIndex;
+function handleSubmitAnswer(){
+    let questionIndex = STORE.questionIndex;
     
     $('.js-quiz').on('click', '.submit', (event) => {
         event.preventDefault();
@@ -181,12 +179,10 @@ function handleSubmitAnswer(status){
         if (userAnswer === correctAnswer){
             STORE.currentLocation = 'correctView';
             STORE.totalCorrect++;
-        }
-        else {
+        } else {
             STORE.currentLocation = 'incorrectView';
             STORE.totalIncorrect++;
         };
-
         renderQuiz();
     });
 }
@@ -195,7 +191,6 @@ function handleNext() {
     $('.js-quiz').on('click', '.next', () => {
         let length = STORE.questions.length - 1;        
         if (STORE.questionIndex < STORE.questions.length -1 ) {
-            console.log(STORE.questionIndex);
             STORE.questionIndex++;
             STORE.currentLocation = "questionView";
         } else {
@@ -205,21 +200,11 @@ function handleNext() {
     })
 }
 
-
-// function handleSubmitAnswer
-// 	user clicks submit button
-// 	Stop normal submit behavior
-// 	Compare question answer to user data
-// 	If question and answer match (handleCorrectAnswer)
-// 	else (handleIncorrectAnswer)
-
-
 // function handleCorrectAnswer
 // 	Correct answer view
 // 	Lightbulb turn on (maybe ding sound)
 // 	If user is not on final question (next question)
 // 	If user is on final question send user to End Game view(handleGameEnd)
-
 
 
 // function handleIncorrectAnswer
@@ -228,7 +213,6 @@ function handleNext() {
 // 	Maybe sound bite of Womp Womp Woooooomp
 // 	If user is not on final question (next question)
 // 	If user is on final question send user to End Game view(handleGameEnd)
-
 
 // function handleGameEnd
 // 	Show user End GAme View
@@ -244,8 +228,6 @@ function handleNext() {
 function renderQuiz() {  
     let viewHTML = createViewHTML(STORE);
     $('.js-quiz').html(viewHTML);
-    console.log(STORE.currentLocation);
-
 }
 
 function handleQuiz(){
@@ -253,7 +235,6 @@ function handleQuiz(){
     startQuiz();
     handleSubmitAnswer(STORE);
     handleNext();
-    console.log(STORE.currentLocation);
 }
 
 $(handleQuiz);
