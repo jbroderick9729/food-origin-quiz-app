@@ -92,7 +92,7 @@ function createViewHTML() {
         case "introView": 
             return viewHTML = 
                 `<div class="introView" id="js-begin">
-                    <h1>Welcome to the quiz</h1>
+                    <h1 class="welcome">Welcome to the quiz</h1>
                     <img src="http://2.bp.blogspot.com/-GYuyz0dENY8/U0aH8cEKBYI/AAAAAAAAACc/3MWXy4O5O7g/s1600/jpg.jpg" alt="image of a table of food dishes">
                     <p>Here are the instructions for the quiz.</p>
                     <button class="js-start-button">Start</button>

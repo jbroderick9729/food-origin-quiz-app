@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+    background:
+      linear-gradient(
+         rgba(22, 92, 133, 0.815),
+         rgba(68, 231, 223, 0.884),
+         rgba(22, 92, 133, 0.815) 
+        );
+  }
+
+  button{
+    background-color:lightskyblue;
+    border: .5px solid black;
+    padding: 16px 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+  }
+
+  button:hover{
+    background-color: lightseagreen;
+    font-weight: bold;
+
+  }
+
+  fieldset{
+    border: 10px solid black;
+    padding-left: 15px;
+  }
+
+  legend{
+      margin-top: 10px;
+      border: none;
+  }
+  
+  fieldset, div img{
+      max-width: 50%;
+      margin-top: 30px;
+      margin-left: 15rem;
+      margin-right: 10rem;
+  }
+
+
+
+  .welcome{
+    margin-left: 10px
+  }
