@@ -133,8 +133,7 @@ function createViewHTML() {
                 <img src="https://c1.staticflickr.com/3/2589/3860162318_7ac34cf82d_b.jpg" alt="food the looks like a sad face">
                 <p>The correct answer was ${questionInfo.correctAnswer}.</p>
                 <p>Here's your current score:</p>
-                <p>Correct: ${STORE.totalCorrect}</p>
-                <p>Wrong: ${STORE.totalIncorrect}</p>
+                <p><span class="right">Correct: ${STORE.totalCorrect}</span> | <span class="wrong">Wrong: ${STORE.totalIncorrect}</span></p>
                 <button class="next">Next</button>
             </div>`;
             break;
@@ -145,8 +144,7 @@ function createViewHTML() {
                     <img src="https://memegenerator.net/img/instances/82030845/most-excellent.jpg" alt="bill and ted most excellent meme">
                     <p>${congrats()} That's correct.</p>
                     <p>Here's your current score:</p>
-                    <p>Correct: ${STORE.totalCorrect}</p>
-                    <p>Wrong: ${STORE.totalIncorrect}</p>
+                    <p><span class="right">Correct: ${STORE.totalCorrect}</span> | <span class="wrong">Wrong: ${STORE.totalIncorrect}</span></p>
                     <button class="next">Next</button>
                 </div>`;
                 break;
@@ -155,9 +153,8 @@ function createViewHTML() {
                 `<div class="endView">
                     <h1>Thanks for taking the Foods of the World quiz.</h1>
                     <img src="https://i0.wp.com/anamicooks.com/wp-content/uploads/2017/11/international-foods-list.jpg?fit=1300%2C866&ssl=1" alt="popular foods of the world">
-                    <p>Score:</p>
-                    <p>Correct: ${STORE.totalCorrect}</p>
-                    <p>Wrong: ${STORE.totalIncorrect}</p>
+                    <h1>Final Score:</h1>
+                    <p><span class="right">Correct: ${STORE.totalCorrect}</span> | <span class="wrong">Wrong: ${STORE.totalIncorrect}</span></p>
                     <p>Want to try again? Click the button below.</p>
                     <button class="startOver">Start over</button>
                 </div>`;
@@ -229,7 +226,6 @@ function handleQuiz(){
     handleSubmitAnswer();
     handleNext();
     handleStartOver();
-    
 }
 
 $(handleQuiz);

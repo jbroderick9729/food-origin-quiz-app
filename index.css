@@ -41,16 +41,14 @@
     padding-left: 15px;
     border: 0;
     padding: 0;
-    /* margin: 0; */
-    margin-left: 500px;
-    /* margin-right: auto; */
+    margin: 0;
     min-width: 0;
-    display: block;
 }
 
   legend{
       margin-top: 10px;
       border: none;
+      text-align: center;
   }
   
   fieldset, p, div img{
@@ -84,7 +82,8 @@
      margin-right: 7px;
      outline: none;
 }
-input:checked::before {
+input:checked::before
+{
      position: absolute;
      font: 13px/1 'Open Sans', sans-serif;
      left: 7px;
@@ -92,6 +91,17 @@ input:checked::before {
      content: '🍉';
 }
 
-form {
-    /* text-align: center; */
+p {
+    text-align: center;
+    font-size: 16px;
+}
+
+.right {
+    font-weight: bold;
+    color: rgb(3, 78, 3)
+}
+
+.wrong {
+    font-weight: bold;
+    color: rgb(122, 6, 6);
 }
