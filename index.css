@@ -30,7 +30,7 @@
 
   }
 
-  fieldset{
+  /*fieldset{
     border: 10px solid black;
     padding-left: 15px;
   }
@@ -41,14 +41,10 @@
   }
   
   fieldset, div img{
+      min-width: 320px;
       max-width: 50%;
       margin-top: 30px;
       margin-left: 15rem;
       margin-right: 10rem;
   }
-
-
-
-  .welcome{
-    margin-left: 10px
-  }
+*/
