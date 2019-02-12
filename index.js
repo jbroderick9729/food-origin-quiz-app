@@ -107,20 +107,20 @@ function createViewHTML() {
                     <fieldset>
                     <legend for="q1">Question ${questionNumber}: ${questionInfo.question}</legend>
                         <div>
-                            <input type="radio" id="${questionInfo.answers[0]}" value="${questionInfo.answers[0]}" name="q${questionNumber}">${questionInfo.answers[0]}
-                            <label for="${questionInfo.answers[0]}">
+                            <input type="radio" id="${questionInfo.answers[0]}" value="${questionInfo.answers[0]}" name="q${questionNumber}" checked />
+                            <label for="${questionInfo.answers[0]}">${questionInfo.answers[0]}</label>
                         </div>
                         <div>
-                            <input type="radio" id="${questionInfo.answers[1]}" value="${questionInfo.answers[1]}" name="q${questionNumber}">${questionInfo.answers[1]}
-                            <label for="${questionInfo.answers[1]}">
+                            <input type="radio" id="${questionInfo.answers[1]}" value="${questionInfo.answers[1]}" name="q${questionNumber}" />
+                            <label for="${questionInfo.answers[1]}">${questionInfo.answers[1]}</label>
                         </div>
                         <div>
-                            <input type="radio" id="${questionInfo.answers[2]}" value="${questionInfo.answers[2]}" name="q${questionNumber}">${questionInfo.answers[2]}
-                            <label for="${questionInfo.answers[2]}">
+                            <input type="radio" id="${questionInfo.answers[2]}" value="${questionInfo.answers[2]}" name="q${questionNumber}" />
+                            <label for="${questionInfo.answers[2]}">${questionInfo.answers[2]}</label>
                         </div>
                         <div>   
-                            <input type="radio" id="${questionInfo.answers[3]}" value="${questionInfo.answers[3]}" name="q${questionNumber}">${questionInfo.answers[3]}
-                            <label for="${questionInfo.answers[3]}">
+                            <input type="radio" id="${questionInfo.answers[3]}" value="${questionInfo.answers[3]}" name="q${questionNumber}" />
+                            <label for="${questionInfo.answers[3]}">${questionInfo.answers[3]}</label>
                         </div>
                         <button type="submit" class="submit">Submit</button>
                     </fielset>
@@ -177,8 +177,7 @@ function handleSubmitAnswer(){
         event.preventDefault();
         let userAnswer = $('input:checked').val();
         let correctAnswer = STORE.questions[questionIndex].correctAnswer;
-        console.log(`useranswer is ${userAnswer} and correctanswer is ${correctAnswer}`);
-        if (userAnswer === correctAnswer){
+                if (userAnswer === correctAnswer){
             STORE.currentLocation = 'correctView';
             STORE.totalCorrect++;
         } else {
@@ -215,7 +214,6 @@ function handleStartOver() {
 function renderQuiz() {  
     let viewHTML = createViewHTML(STORE);
     $('.js-quiz').html(viewHTML);
-    console.log(STORE.questionIndex);
 }
 
 function handleQuiz(){

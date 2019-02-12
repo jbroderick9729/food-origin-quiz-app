@@ -24,6 +24,7 @@
     margin-right: auto;
     width: 200px;
     display: block;
+    cursor: pointer;
   }
 
   button:hover{
@@ -87,13 +88,12 @@ input:checked::before
      position: absolute;
      font: 13px/1 'Open Sans', sans-serif;
      left: 7px;
-     top: 7px;
+     top: 6px;
      content: '🍉';
 }
 
 p {
     text-align: center;
-    font-size: 16px;
 }
 
 .right {
@@ -104,4 +104,8 @@ p {
 .wrong {
     font-weight: bold;
     color: rgb(122, 6, 6);
+}
+
+button:focus, input:focus {
+  border: 1px rgb(47, 47, 192) solid;
 }
