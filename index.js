@@ -170,12 +170,14 @@ function startQuiz(){
 }
 
 function handleSubmitAnswer(){
-    let questionIndex = STORE.questionIndex;
+    
     
     $('.js-quiz').on('click', '.submit', (event) => {
+        let questionIndex = STORE.questionIndex;
         event.preventDefault();
         let userAnswer = $('input:checked').val();
         let correctAnswer = STORE.questions[questionIndex].correctAnswer;
+        console.log(`useranswer is ${userAnswer} and correctanswer is ${correctAnswer}`);
         if (userAnswer === correctAnswer){
             STORE.currentLocation = 'correctView';
             STORE.totalCorrect++;
@@ -213,6 +215,7 @@ function handleStartOver() {
 function renderQuiz() {  
     let viewHTML = createViewHTML(STORE);
     $('.js-quiz').html(viewHTML);
+    console.log(STORE.questionIndex);
 }
 
 function handleQuiz(){
