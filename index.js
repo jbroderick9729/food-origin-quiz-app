@@ -74,13 +74,13 @@ const STORE = {
             src: "https://instagram.fagc1-1.fna.fbcdn.net/vp/b49f4ebbbb167fff62cdd34797a2f242/5CDEBD39/t51.2885-15/sh0.08/e35/s640x640/31425115_187061881941544_2907563245868941312_n.jpg?_nc_ht=instagram.fagc1-1.fna.fbcdn.net",
             alt: "Plate of stewed meat."
              }, 
-                
-        ]};
+        ]
+};
    
 function congrats() {
     let index = Math.floor(Math.random() * 4);
     let options = ["Congrats!", "Hurray!", "You did it!", "Kudos!"];
-        return options[index];
+    return options[index];
 }
 
 function createViewHTML() {
@@ -163,7 +163,7 @@ function createViewHTML() {
 }
 
 function startQuiz(){
-    $('#js-begin').on('click', '.js-start-button', () => {
+    $('.js-quiz').on('click', '.js-start-button', () => {
         STORE.currentLocation = 'questionView';
         renderQuiz();
     });
@@ -183,7 +183,6 @@ function handleSubmitAnswer(){
             STORE.currentLocation = 'incorrectView';
             STORE.totalIncorrect++;
         };
-        questionIndex += 1;
         renderQuiz();
     });
 }
@@ -196,7 +195,6 @@ function handleNext() {
             STORE.currentLocation = "questionView";
         } else {
             STORE.currentLocation = "endView";
-
         }
         renderQuiz();
     });
@@ -204,16 +202,13 @@ function handleNext() {
 
 function handleStartOver() {
     $('.js-quiz').on('click', '.startOver', () => {
-        console.log('intro view');
         STORE.currentLocation = 'introView';
         STORE.questionIndex = 0;
         STORE.totalCorrect = 0;
         STORE.totalIncorrect = 0;
-        renderQuiz(); 
+        renderQuiz();   
     });
-        
 };
-
 
 function renderQuiz() {  
     let viewHTML = createViewHTML(STORE);
@@ -225,7 +220,7 @@ function handleQuiz(){
     startQuiz();
     handleSubmitAnswer();
     handleNext();
-    handleStartOver();
+    handleStartOver(); 
 }
 
 $(handleQuiz);
