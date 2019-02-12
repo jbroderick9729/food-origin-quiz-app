@@ -106,22 +106,11 @@ function createViewHTML() {
                     <form>
                     <fieldset>
                     <legend for="q1">Question ${questionNumber}: ${questionInfo.question}</legend>
-                        <div>
-                            <input type="radio" id="${questionInfo.answers[0]}" value="${questionInfo.answers[0]}" name="q${questionNumber}" checked />
-                            <label for="${questionInfo.answers[0]}">${questionInfo.answers[0]}</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="${questionInfo.answers[1]}" value="${questionInfo.answers[1]}" name="q${questionNumber}" />
-                            <label for="${questionInfo.answers[1]}">${questionInfo.answers[1]}</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="${questionInfo.answers[2]}" value="${questionInfo.answers[2]}" name="q${questionNumber}" />
-                            <label for="${questionInfo.answers[2]}">${questionInfo.answers[2]}</label>
-                        </div>
-                        <div>   
-                            <input type="radio" id="${questionInfo.answers[3]}" value="${questionInfo.answers[3]}" name="q${questionNumber}" />
-                            <label for="${questionInfo.answers[3]}">${questionInfo.answers[3]}</label>
-                        </div>
+
+                        <label><input type="radio" id="${questionInfo.answers[0]}" value="${questionInfo.answers[0]}" name="q${questionNumber}" required/>${questionInfo.answers[0]} </label>
+                        <label><input type="radio" id="${questionInfo.answers[1]}" value="${questionInfo.answers[1]}" name="q${questionNumber}" required/>${questionInfo.answers[1]} </label>
+                        <label><input type="radio" id="${questionInfo.answers[2]}" value="${questionInfo.answers[2]}" name="q${questionNumber}" required/>${questionInfo.answers[2]} </label>
+                        <label><input type="radio" id="${questionInfo.answers[3]}" value="${questionInfo.answers[3]}" name="q${questionNumber}" required/>${questionInfo.answers[3]} </label>
                         <button type="submit" class="submit">Submit</button>
                     </fielset>
                     </form>
@@ -170,11 +159,11 @@ function startQuiz(){
 }
 
 function handleSubmitAnswer(){
-    
-    
+
     $('.js-quiz').on('click', '.submit', (event) => {
         let questionIndex = STORE.questionIndex;
         event.preventDefault();
+        let questionIndex = STORE.questionIndex;
         let userAnswer = $('input:checked').val();
         let correctAnswer = STORE.questions[questionIndex].correctAnswer;
                 if (userAnswer === correctAnswer){
@@ -184,6 +173,7 @@ function handleSubmitAnswer(){
             STORE.currentLocation = 'incorrectView';
             STORE.totalIncorrect++;
         };
+        console.log(userAnswer, correctAnswer);
         renderQuiz();
     });
 }

@@ -64,7 +64,9 @@
 
   label {
       margin-left: 10px;
+      display: block;
       cursor: pointer;
+
   }
 
   input {
@@ -84,6 +86,11 @@
      margin-right: 7px;
      outline: none;
 }
+
+input:checked{
+  font-style: bold;
+}
+
 input:checked::before
 {
      position: absolute;
