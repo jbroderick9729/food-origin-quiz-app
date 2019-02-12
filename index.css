@@ -65,6 +65,8 @@
   label {
       margin-left: 10px;
       display: block;
+      cursor: pointer;
+
   }
 
   input {
