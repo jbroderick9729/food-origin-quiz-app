@@ -106,22 +106,29 @@ function createViewHTML() {
                     <form>
                     <fieldset>
                     <legend for="q1">Question ${questionNumber}: ${questionInfo.question}</legend>
+<<<<<<< HEAD
+                        <label><input type="radio" id="${questionInfo.answers[0]}" value="${questionInfo.answers[0]}" name="q${questionNumber}" required/>${questionInfo.answers[0]} </label>
+                        <label><input type="radio" id="${questionInfo.answers[1]}" value="${questionInfo.answers[1]}" name="q${questionNumber}" required/>${questionInfo.answers[1]} </label>
+                        <label><input type="radio" id="${questionInfo.answers[2]}" value="${questionInfo.answers[2]}" name="q${questionNumber}" required/>${questionInfo.answers[2]} </label>
+                        <label><input type="radio" id="${questionInfo.answers[3]}" value="${questionInfo.answers[3]}" name="q${questionNumber}" required/>${questionInfo.answers[3]} </label>
+=======
                         <div>
-                            <input type="radio" id="${questionInfo.answers[0]}" value="${questionInfo.answers[0]}" name="q${questionNumber}">${questionInfo.answers[0]}
-                            <label for="${questionInfo.answers[0]}">
+                            <input type="radio" id="${questionInfo.answers[0]}" value="${questionInfo.answers[0]}" name="q${questionNumber}" checked />
+                            <label for="${questionInfo.answers[0]}">${questionInfo.answers[0]}</label>
                         </div>
                         <div>
-                            <input type="radio" id="${questionInfo.answers[1]}" value="${questionInfo.answers[1]}" name="q${questionNumber}">${questionInfo.answers[1]}
-                            <label for="${questionInfo.answers[1]}">
+                            <input type="radio" id="${questionInfo.answers[1]}" value="${questionInfo.answers[1]}" name="q${questionNumber}" />
+                            <label for="${questionInfo.answers[1]}">${questionInfo.answers[1]}</label>
                         </div>
                         <div>
-                            <input type="radio" id="${questionInfo.answers[2]}" value="${questionInfo.answers[2]}" name="q${questionNumber}">${questionInfo.answers[2]}
-                            <label for="${questionInfo.answers[2]}">
+                            <input type="radio" id="${questionInfo.answers[2]}" value="${questionInfo.answers[2]}" name="q${questionNumber}" />
+                            <label for="${questionInfo.answers[2]}">${questionInfo.answers[2]}</label>
                         </div>
                         <div>   
-                            <input type="radio" id="${questionInfo.answers[3]}" value="${questionInfo.answers[3]}" name="q${questionNumber}">${questionInfo.answers[3]}
-                            <label for="${questionInfo.answers[3]}">
+                            <input type="radio" id="${questionInfo.answers[3]}" value="${questionInfo.answers[3]}" name="q${questionNumber}" />
+                            <label for="${questionInfo.answers[3]}">${questionInfo.answers[3]}</label>
                         </div>
+>>>>>>> 34e1fd3467b5e8922e50b08483371fdfc6f11dd8
                         <button type="submit" class="submit">Submit</button>
                     </fielset>
                     </form>
@@ -170,19 +177,20 @@ function startQuiz(){
 }
 
 function handleSubmitAnswer(){
-    let questionIndex = STORE.questionIndex;
-    
     $('.js-quiz').on('click', '.submit', (event) => {
+        let questionIndex = STORE.questionIndex;
         event.preventDefault();
+        let questionIndex = STORE.questionIndex;
         let userAnswer = $('input:checked').val();
         let correctAnswer = STORE.questions[questionIndex].correctAnswer;
-        if (userAnswer === correctAnswer){
+                if (userAnswer === correctAnswer){
             STORE.currentLocation = 'correctView';
             STORE.totalCorrect++;
         } else {
             STORE.currentLocation = 'incorrectView';
             STORE.totalIncorrect++;
         };
+        console.log(userAnswer, correctAnswer);
         renderQuiz();
     });
 }
